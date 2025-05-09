@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "genre",schema = "movie-data")
+@Table(name = "genre",schema = "movie_data")
 @Getter
 @Setter
 @NoArgsConstructor

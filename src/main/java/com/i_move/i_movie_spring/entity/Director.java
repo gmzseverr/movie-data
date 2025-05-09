@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "director",schema = "movie-data")
+@Table(name = "director",schema = "movie_data")
 @Getter
 @Setter
 @NoArgsConstructor

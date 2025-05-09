@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "movie",schema = "movie-data")
+@Table(name = "movie",schema = "movie_data")
 @Getter
 @Setter
 @NoArgsConstructor

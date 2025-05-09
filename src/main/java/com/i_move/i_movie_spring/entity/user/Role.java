@@ -12,7 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "role", schema = "movie-data")
+@Table(name = "role", schema = "movie_data")
 public class Role implements GrantedAuthority {
 
 

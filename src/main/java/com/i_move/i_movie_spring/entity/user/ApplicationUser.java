@@ -16,7 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "app_user", schema = "movie-data")
+@Table(name = "app_user", schema = "movie_data")
 
 public class ApplicationUser implements UserDetails {
 
