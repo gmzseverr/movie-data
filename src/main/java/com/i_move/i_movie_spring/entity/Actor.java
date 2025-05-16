@@ -12,7 +12,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "actor",schema = "moviedb")
+@Table(name = "actor")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,7 +27,7 @@ public class Actor {
     private String name;
 
     @ManyToMany(cascade = {CascadeType.REFRESH,CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinTable(name = "actor_movie", schema = "moviedb",
+    @JoinTable(name = "actor_movie",
             joinColumns = @JoinColumn(name = "actor_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id"))
     @JsonBackReference
