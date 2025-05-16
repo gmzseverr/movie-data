@@ -1,23 +1,26 @@
 # Build aşaması
 FROM maven:3.8.5-openjdk-17 AS build
 
-# Projeyi konteynıra kopyalıyoruz
-COPY . /usr/src/app
+# Çalışma dizinini ayarla
+WORKDIR /usr/src
 
-# Çalışma dizinini değiştiriyoruz
-WORKDIR /usr/src/app
+# Projeyi konteynıra kopyala
+COPY . .
 
-# Maven ile projeyi paketliyoruz
+# Projeyi build et (testleri atla)
 RUN mvn clean package -DskipTests
 
-# Çalıştırma aşaması
+# Runtime aşaması
 FROM openjdk:17.0.1-jdk-slim
 
-# JAR dosyasını build aşamasından kopyalıyoruz
-COPY --from=build /usr/src/app/target/i-movie-spring-0.0.1-SNAPSHOT.jar demo.jar
+# Çalışma dizinini ayarla
+WORKDIR /app
 
-# Uygulama 8080 portunda çalışacak
+# JAR dosyasını build aşamasından kopyala
+COPY --from=build /usr/src/target/i-movie-spring-0.0.1-SNAPSHOT.jar app.jar
+
+# Port aç
 EXPOSE 8080
 
-# Uygulama çalıştırılacak
-ENTRYPOINT ["java", "-jar", "demo.jar"]
+# Uygulamayı başlat
+ENTRYPOINT ["java", "-jar", "app.jar"]

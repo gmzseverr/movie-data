@@ -4,12 +4,13 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "movie",schema = "movie_data")
+@Table(name = "movie",schema = "moviedb")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -29,7 +30,7 @@ public class Movie {
     private int year;
 
     @NotNull
-    @Size(min = 10)
+    @Size(min = 10, max = 20000)
     private String description;
 
     @NotNull
@@ -56,13 +57,13 @@ public class Movie {
     private Director director;
 
     @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    @JoinTable(name = "actor_movie", schema = "movie-data",
+    @JoinTable(name = "actor_movie", schema = "moviedb",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private List<Actor> actors;
 
     @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-    @JoinTable(name = "genre_movie", schema = "movie-data",
+    @JoinTable(name = "genre_movie", schema = "moviedb",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genre> genres;

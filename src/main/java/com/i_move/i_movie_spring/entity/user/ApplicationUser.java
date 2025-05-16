@@ -16,7 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "app_user", schema = "movie_data")
+@Table(name = "app_user", schema = "moviedb")
 
 public class ApplicationUser implements UserDetails {
 
@@ -35,7 +35,7 @@ public class ApplicationUser implements UserDetails {
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "app_user_role",schema = "movie-data",
+    @JoinTable(name = "app_user_role",schema = "moviedb",
             joinColumns = @JoinColumn(name = "app_user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> authorities;
