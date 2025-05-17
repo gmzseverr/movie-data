@@ -36,8 +36,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Value("${frontend.url}")
-    private String frontendUrls;
+
 
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
@@ -75,7 +74,8 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
-        List<String> origins = Arrays.asList(frontendUrls.split(","));
+        List<String> origins = Arrays.asList(frontendUrl.split(","));
+        config.setAllowedOrigins(origins);
         config.setAllowedMethods(List.of("*"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
